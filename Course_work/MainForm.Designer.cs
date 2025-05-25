@@ -55,7 +55,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.MidnightBlue;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.Controls.Add(guna2CustomGradientPanel1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -87,7 +87,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Calibri", 36F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(67, 150);
             label1.Name = "label1";
             label1.Size = new Size(302, 176);
@@ -116,7 +116,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(0, 118, 225);
+            panel2.BackColor = Color.Navy;
             panel2.Location = new Point(609, 175);
             panel2.Name = "panel2";
             panel2.Size = new Size(4, 500);
