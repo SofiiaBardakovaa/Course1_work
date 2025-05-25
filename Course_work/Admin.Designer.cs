@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -42,15 +43,18 @@
             panel1 = new Panel();
             label2 = new Label();
             btnLogOut = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            btnProfile = new Guna.UI2.WinForms.Guna2Button();
+            btnViewUser = new Guna.UI2.WinForms.Guna2Button();
+            btnAddNewUser = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            btnInfo = new Guna.UI2.WinForms.Guna2Button();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            uC_Info1 = new Course_work.AdminUC.UC_Info();
+            guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -58,11 +62,11 @@
             panel1.BackColor = Color.LightCyan;
             panel1.Controls.Add(label2);
             panel1.Controls.Add(btnLogOut);
-            panel1.Controls.Add(guna2Button4);
-            panel1.Controls.Add(guna2Button3);
-            panel1.Controls.Add(guna2Button2);
+            panel1.Controls.Add(btnProfile);
+            panel1.Controls.Add(btnViewUser);
+            panel1.Controls.Add(btnAddNewUser);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(guna2Button1);
+            panel1.Controls.Add(btnInfo);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -104,65 +108,65 @@
             btnLogOut.Text = "Log Out";
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // guna2Button4
+            // btnProfile
             // 
-            guna2Button4.BorderRadius = 10;
-            guna2Button4.CustomizableEdges = customizableEdges3;
-            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button4.FillColor = Color.CornflowerBlue;
-            guna2Button4.Font = new Font("Century Gothic", 10F);
-            guna2Button4.ForeColor = Color.White;
-            guna2Button4.HoverState.BorderColor = Color.Black;
-            guna2Button4.HoverState.FillColor = Color.RoyalBlue;
-            guna2Button4.Location = new Point(12, 577);
-            guna2Button4.Name = "guna2Button4";
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Button4.Size = new Size(245, 68);
-            guna2Button4.TabIndex = 3;
-            guna2Button4.Text = "Profile";
+            btnProfile.BorderRadius = 10;
+            btnProfile.CustomizableEdges = customizableEdges3;
+            btnProfile.DisabledState.BorderColor = Color.DarkGray;
+            btnProfile.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnProfile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnProfile.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnProfile.FillColor = Color.CornflowerBlue;
+            btnProfile.Font = new Font("Century Gothic", 10F);
+            btnProfile.ForeColor = Color.White;
+            btnProfile.HoverState.BorderColor = Color.Black;
+            btnProfile.HoverState.FillColor = Color.RoyalBlue;
+            btnProfile.Location = new Point(12, 577);
+            btnProfile.Name = "btnProfile";
+            btnProfile.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnProfile.Size = new Size(245, 68);
+            btnProfile.TabIndex = 3;
+            btnProfile.Text = "Profile";
             // 
-            // guna2Button3
+            // btnViewUser
             // 
-            guna2Button3.BorderRadius = 10;
-            guna2Button3.CustomizableEdges = customizableEdges5;
-            guna2Button3.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button3.FillColor = Color.CornflowerBlue;
-            guna2Button3.Font = new Font("Century Gothic", 10F);
-            guna2Button3.ForeColor = Color.White;
-            guna2Button3.HoverState.BorderColor = Color.Black;
-            guna2Button3.HoverState.FillColor = Color.RoyalBlue;
-            guna2Button3.Location = new Point(12, 485);
-            guna2Button3.Name = "guna2Button3";
-            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Button3.Size = new Size(245, 68);
-            guna2Button3.TabIndex = 2;
-            guna2Button3.Text = "View User";
+            btnViewUser.BorderRadius = 10;
+            btnViewUser.CustomizableEdges = customizableEdges5;
+            btnViewUser.DisabledState.BorderColor = Color.DarkGray;
+            btnViewUser.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnViewUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnViewUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnViewUser.FillColor = Color.CornflowerBlue;
+            btnViewUser.Font = new Font("Century Gothic", 10F);
+            btnViewUser.ForeColor = Color.White;
+            btnViewUser.HoverState.BorderColor = Color.Black;
+            btnViewUser.HoverState.FillColor = Color.RoyalBlue;
+            btnViewUser.Location = new Point(12, 485);
+            btnViewUser.Name = "btnViewUser";
+            btnViewUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnViewUser.Size = new Size(245, 68);
+            btnViewUser.TabIndex = 2;
+            btnViewUser.Text = "View User";
             // 
-            // guna2Button2
+            // btnAddNewUser
             // 
-            guna2Button2.BorderRadius = 10;
-            guna2Button2.CustomizableEdges = customizableEdges7;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.CornflowerBlue;
-            guna2Button2.Font = new Font("Century Gothic", 10F);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.HoverState.BorderColor = Color.Black;
-            guna2Button2.HoverState.FillColor = Color.RoyalBlue;
-            guna2Button2.Location = new Point(12, 390);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button2.Size = new Size(245, 68);
-            guna2Button2.TabIndex = 1;
-            guna2Button2.Text = "Add New User";
+            btnAddNewUser.BorderRadius = 10;
+            btnAddNewUser.CustomizableEdges = customizableEdges7;
+            btnAddNewUser.DisabledState.BorderColor = Color.DarkGray;
+            btnAddNewUser.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnAddNewUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnAddNewUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAddNewUser.FillColor = Color.CornflowerBlue;
+            btnAddNewUser.Font = new Font("Century Gothic", 10F);
+            btnAddNewUser.ForeColor = Color.White;
+            btnAddNewUser.HoverState.BorderColor = Color.Black;
+            btnAddNewUser.HoverState.FillColor = Color.RoyalBlue;
+            btnAddNewUser.Location = new Point(12, 390);
+            btnAddNewUser.Name = "btnAddNewUser";
+            btnAddNewUser.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnAddNewUser.Size = new Size(245, 68);
+            btnAddNewUser.TabIndex = 1;
+            btnAddNewUser.Text = "Add New User";
             // 
             // label1
             // 
@@ -175,25 +179,28 @@
             label1.TabIndex = 1;
             label1.Text = "Admin";
             // 
-            // guna2Button1
+            // btnInfo
             // 
-            guna2Button1.BorderRadius = 10;
-            guna2Button1.CustomizableEdges = customizableEdges9;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.CornflowerBlue;
-            guna2Button1.Font = new Font("Century Gothic", 10F);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.HoverState.BorderColor = Color.Black;
-            guna2Button1.HoverState.FillColor = Color.RoyalBlue;
-            guna2Button1.Location = new Point(12, 301);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2Button1.Size = new Size(245, 68);
-            guna2Button1.TabIndex = 0;
-            guna2Button1.Text = "Info";
+            btnInfo.BorderRadius = 10;
+            btnInfo.CheckedState.FillColor = Color.RoyalBlue;
+            btnInfo.CustomizableEdges = customizableEdges9;
+            btnInfo.DisabledState.BorderColor = Color.DarkGray;
+            btnInfo.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnInfo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnInfo.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnInfo.FillColor = Color.CornflowerBlue;
+            btnInfo.Font = new Font("Century Gothic", 10F);
+            btnInfo.ForeColor = Color.White;
+            btnInfo.HoverState.BorderColor = Color.Black;
+            btnInfo.HoverState.FillColor = Color.RoyalBlue;
+            btnInfo.Location = new Point(12, 301);
+            btnInfo.Name = "btnInfo";
+            btnInfo.PressedColor = Color.RoyalBlue;
+            btnInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnInfo.Size = new Size(245, 68);
+            btnInfo.TabIndex = 0;
+            btnInfo.Text = "Info";
+            btnInfo.Click += btnInfo_Click;
             // 
             // pictureBox1
             // 
@@ -207,10 +214,24 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(uC_Info1);
             panel2.Location = new Point(278, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(1102, 766);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
+            // 
+            // uC_Info1
+            // 
+            uC_Info1.BackColor = Color.White;
+            uC_Info1.Location = new Point(3, 3);
+            uC_Info1.Name = "uC_Info1";
+            uC_Info1.Size = new Size(1102, 766);
+            uC_Info1.TabIndex = 0;
+            // 
+            // guna2Elipse1
+            // 
+            guna2Elipse1.TargetControl = panel2;
             // 
             // Admin
             // 
@@ -224,9 +245,11 @@
             Name = "Admin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin";
+            Load += Admin_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -236,11 +259,14 @@
         private Panel panel2;
         private Label label1;
         private PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnViewUser;
+        private Guna.UI2.WinForms.Guna2Button btnAddNewUser;
+        private Guna.UI2.WinForms.Guna2Button btnInfo;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btnProfile;
         private Label label2;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private AdminUC.UC_Info uC_Info1;
+
     }
 }

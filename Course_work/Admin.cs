@@ -17,11 +17,6 @@ namespace Course_work
             InitializeComponent();
         }
 
-        private void Admin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -32,6 +27,34 @@ namespace Course_work
             MainForm mainForm = new MainForm();
             mainForm.Show();
             this.Hide();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            ResetButtonStyles();
+
+            btnInfo.FillColor = Color.RoyalBlue;
+
+            uC_Info1.Visible = true;
+            uC_Info1.BringToFront();
+        }
+
+        private void ResetButtonStyles()
+        {
+            btnInfo.FillColor = Color.CornflowerBlue;
+            btnAddNewUser.FillColor = Color.CornflowerBlue;
+            btnViewUser.FillColor = Color.CornflowerBlue;
+            btnProfile.FillColor = Color.CornflowerBlue;
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+            btnInfo.PerformClick();
         }
     }
 }
