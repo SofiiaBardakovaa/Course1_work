@@ -145,7 +145,7 @@
             btnAddNewUser.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAddNewUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAddNewUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddNewUser.FillColor = Color.LightSeaGreen;
+            btnAddNewUser.FillColor = Color.CornflowerBlue;
             btnAddNewUser.Font = new Font("Century Gothic", 10F);
             btnAddNewUser.ForeColor = Color.White;
             btnAddNewUser.HoverState.BorderColor = Color.Black;

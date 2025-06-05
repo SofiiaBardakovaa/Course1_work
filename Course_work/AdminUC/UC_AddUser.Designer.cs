@@ -245,6 +245,7 @@
             // flowLayoutPanelMedications
             // 
             flowLayoutPanelMedications.AutoScroll = true;
+            flowLayoutPanelMedications.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             flowLayoutPanelMedications.Location = new Point(32, 187);
             flowLayoutPanelMedications.Name = "flowLayoutPanelMedications";
             flowLayoutPanelMedications.Size = new Size(571, 511);
