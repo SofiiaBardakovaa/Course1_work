@@ -17,6 +17,12 @@ namespace Course_work
             InitializeComponent();
         }
 
+        private void Doctor_Load(object sender, EventArgs e)
+        {
+            btnDisease.PerformClick();
+            uC_D_Disease1.Visible = false;
+        }
+
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             MainForm mainForm = new MainForm();
@@ -30,8 +36,8 @@ namespace Course_work
 
             btnDisease.FillColor = Color.Crimson;
 
-            //uC_Info1.Visible = true;
-            //uC_Info1.BringToFront();
+            uC_D_Disease1.Visible = true;
+            uC_D_Disease1.BringToFront();
         }
 
         private void ResetButtonStyles()
@@ -54,12 +60,6 @@ namespace Course_work
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void Doctor_Load(object sender, EventArgs e)
-        {
-            btnDisease.PerformClick();
-            //uC_AddUser1.Visible = false;
         }
     }
 }

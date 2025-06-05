@@ -5,21 +5,20 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Course_work.AdminUC;
+using Course_work.Models;
 
 namespace Course_work
 {
     public partial class Admin : Form
     {
+
         public Admin()
         {
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

@@ -5,243 +5,189 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Course_work.Models;
-using System.IO;
-using System.Text.Json;
 
 namespace Course_work.AdminUC
 {
     public partial class UC_Disease : UserControl
     {
-        private List<Medication> medications = new List<Medication>();
-        private Medication selectedMedication = null;
-        private readonly string dataFilePath = "medications.json";
+        private List<Medication> allMedications;
+        private DiseaseManager diseaseManager;
+        private Disease selectedDisease = null;
 
         public UC_Disease()
         {
             InitializeComponent();
-            LoadMedicationsFromFile();
+            diseaseManager = new DiseaseManager("diseases.json");
+            RedrawDiseaseList();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchText = txtSearch.Text.Trim().ToLower();
 
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                RedrawMedicationList();
+            string nameSearch = txtSearch.Text.Trim().ToLower();
+            string symptomsInput = txtSymptoms.Text.Trim().ToLower();
+            string proceduresInput = txtProcedures.Text.Trim().ToLower();
+
+            var symptomFilters = symptomsInput.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                              .Select(s => s.Trim()).ToList();
+            var procedureFilters = proceduresInput.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                                  .Select(p => p.Trim()).ToList();
+
+            var results = diseaseManager.Search(nameSearch, symptomFilters, procedureFilters);
+
+            flowLayoutPanelDiseases.Controls.Clear();
+            if (results.Count == 0)
                 return;
-            }
 
-            var directMatches = medications
-                .Where(m => m.Name.ToLower().Contains(searchText) ||
-                            m.Substitutes.Any(s => s.ToLower().Contains(searchText)))
-                .ToList();
+            foreach (var d in results)
+                AddDiseaseToPanel(d);
+        }
 
-            var relatedNames = new HashSet<string>(
-                directMatches.Select(m => m.Name.ToLower())
-                .Concat(directMatches.SelectMany(m => m.Substitutes.Select(s => s.ToLower())))
-            );
-
-            var finalResults = medications
-                .Where(m =>
-                    relatedNames.Contains(m.Name.ToLower()) ||
-                    m.Substitutes.Any(s => relatedNames.Contains(s.ToLower()))
-                )
-                .Distinct()
-                .ToList();
-
-            flowLayoutPanelMedications.Controls.Clear();
-            foreach (var med in finalResults)
+        private void AddDiseaseToPanel(Disease d)
+        {
+            Panel panel = new Panel
             {
-                AddMedicationToPanel(med);
-            }
+                BorderStyle = BorderStyle.FixedSingle,
+                Width = flowLayoutPanelDiseases.ClientSize.Width - 25,
+                Height = 120
+            };
+
+            Label lblName = new Label { Text = d.Name, Location = new Point(10, 10), AutoSize = true };
+
+            string shortText = d.ShortInfo.Length > 80 ? d.ShortInfo.Substring(0, 80) + "..." : d.ShortInfo;
+            Label lblShortInfo = new Label
+            {
+                Text = shortText,
+                Location = new Point(10, 30),
+                Size = new Size(panel.Width - 90, 40),
+                AutoEllipsis = true
+            };
+
+            Button btnInfo = new Button
+            {
+                Text = "Інфо",
+                Location = new Point(10, 80),
+                Size = new Size(100, 30)
+            };
+            btnInfo.Click += (s, e) => ShowFullInfo(d);
+
+            Button btnEdit = new Button
+            {
+                Text = "Edit",
+                Location = new Point(panel.Width - 70, 10),
+                Size = new Size(60, 30)
+            };
+            btnEdit.Click += (s, e) => LoadDiseaseForEditing(d);
+
+            panel.Controls.Add(lblName);
+            panel.Controls.Add(lblShortInfo);
+            panel.Controls.Add(btnInfo);
+            panel.Controls.Add(btnEdit);
+            flowLayoutPanelDiseases.Controls.Add(panel);
+        }
+
+        private void LoadDiseaseForEditing(Disease d)
+        {
+            selectedDisease = d;
+            txtName.Text = d.Name;
+            txtShortInfo.Text = d.ShortInfo;
+            txtSymptomsAdd.Text = string.Join(", ", d.Symptoms);
+            txtProceduresAdd.Text = string.Join(", ", d.Procedures);
+            txtMedicinesAdd.Text = string.Join(", ", d.RecommendedMedications);
+        }
+
+
+        private void ShowFullInfo(Disease d)
+        {
+            MessageBox.Show(
+            $"Назва: {d.Name}\nКоротка інфо: {d.ShortInfo}\nСимптоми: {string.Join(", ", d.Symptoms)}\n" +
+            $"Процедури: {string.Join(", ", d.Procedures)}\nЛіки: {string.Join(", ", d.RecommendedMedications)}",
+            "Інформація про хворобу",
+            MessageBoxButtons.OK);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (selectedMedication != null)
+            if (selectedDisease != null)
             {
                 var result = MessageBox.Show(
-                    $"Ви дійсно хочете видалити медикамент \"{selectedMedication.Name}\"?",
+                    $"Ви дійсно хочете видалити хворобу \"{selectedDisease.Name}\"?",
                     "Підтвердження видалення",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
+                    MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
-                    medications.Remove(selectedMedication);
-                    RedrawMedicationList();
-                    selectedMedication = null;
+                    diseaseManager.Delete(selectedDisease);
+                    selectedDisease = null;
                     ClearInputFields();
+                    RedrawDiseaseList();
                 }
             }
             else
             {
-                MessageBox.Show("Виберіть медикамент для видалення через кнопку Edit.");
+                MessageBox.Show("Виберіть хворобу для видалення через кнопку Edit.");
             }
-            SaveMedicationsToFile();
 
         }
 
-        private void RedrawMedicationList()
+        private void RedrawDiseaseList()
         {
-            flowLayoutPanelMedications.Controls.Clear();
-            foreach (var med in medications)
-            {
-                AddMedicationToPanel(med);
-            }
+            flowLayoutPanelDiseases.Controls.Clear();
+            foreach (var d in diseaseManager.Diseases)
+                AddDiseaseToPanel(d);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
-            string substitutes = txtSubstitutes.Text.Trim();
-            int quantity = (int)txtQuantity.Value;
+            string shortInfo = txtShortInfo.Text.Trim();
+            string symptoms = txtSymptomsAdd.Text.Trim();
+            string procedures = txtProceduresAdd.Text.Trim();
+            string meds = txtMedicinesAdd.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                MessageBox.Show("Введіть назву медикаменту");
-                return;
-            }
-            if (txtQuantity.Value <= 0)
-            {
-                MessageBox.Show("Введіть кількість препарату від 1");
+                MessageBox.Show("Введіть назву хвороби.");
                 return;
             }
 
-            if (selectedMedication != null)
-            {
-                // Редагування
-                selectedMedication.Name = name;
-                selectedMedication.Quantity = quantity;
-                selectedMedication.Substitutes = substitutes
-                    .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(s => s.Trim()).ToList();
+            var symptomsList = symptoms.Split(',').Select(s => s.Trim()).Where(s => s != "").ToList();
+            var proceduresList = procedures.Split(',').Select(p => p.Trim()).Where(p => p != "").ToList();
+            var medList = meds.Split(',').Select(m => m.Trim()).Where(m => m != "").ToList();
+            var newDisease = new Disease(name, shortInfo, symptomsList, proceduresList, medList);
 
-                RedrawMedicationList();
-                selectedMedication = null;
-                txtSearch.Text = "";
+            if (selectedDisease != null)
+            {
+                diseaseManager.Edit(selectedDisease, newDisease);
+                selectedDisease = null;
             }
             else
             {
-                // Додавання нового
-                Medication med = Medication.FromCsv(name, quantity, substitutes);
-                medications.Add(med);
-                AddMedicationToPanel(med);
+                diseaseManager.Add(newDisease);
             }
 
             ClearInputFields();
-            SaveMedicationsToFile();
+            RedrawDiseaseList();
         }
+
 
         private void ClearInputFields()
         {
             txtName.Text = "";
-            txtSubstitutes.Text = "";
-            txtQuantity.Value = 0;
+            txtShortInfo.Text = "";
+            txtSymptomsAdd.Text = "";
+            txtProceduresAdd.Text = "";
+            txtMedicinesAdd.Text = "";
         }
 
-        private void AddMedicationToPanel(Medication med)
-        {
-            Panel panel = new Panel();
-            panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Width = flowLayoutPanelMedications.Width - 25;
-            panel.Height = 100;
-
-            Label lblName = new Label();
-            lblName.Text = med.Name;
-            lblName.Location = new Point(10, 10);
-            lblName.AutoSize = true;
-
-            Label lblQty = new Label();
-            lblQty.Text = $"К-сть на складі: {med.Quantity}";
-            lblQty.Location = new Point(10, 30);
-            lblQty.AutoSize = true;
-
-            Button btnInfo = new Button();
-            btnInfo.Text = "Відкрити повну інформацію";
-            btnInfo.Location = new Point(10, 60);
-            btnInfo.Click += (s, e) => ShowFullInfo(med);
-
-            Button btnEdit = new Button();
-            btnEdit.Text = "Edit";
-            btnEdit.Size = new Size(60, 30);
-            btnEdit.Location = new Point(panel.Width - 70, 10);
-            btnEdit.Click += (s, e) => LoadMedicationForEditing(med);
-
-            panel.Controls.Add(lblName);
-            panel.Controls.Add(lblQty);
-            panel.Controls.Add(btnInfo);
-            panel.Controls.Add(btnEdit);
-
-            flowLayoutPanelMedications.Controls.Add(panel);
-        }
-
-        private void LoadMedicationForEditing(Medication med)
-        {
-            txtName.Text = med.Name;
-            txtQuantity.Value = med.Quantity;
-            txtSubstitutes.Text = med.GetSubstitutesAsString();
-            selectedMedication = med;
-        }
-
-        private void ShowFullInfo(Medication med)
-        {
-            MessageBox.Show($"Назва: {med.Name}\nКількість: {med.Quantity}\nВзаємозамінність: {med.GetSubstitutesAsString()}",
-                            "Інформація про медикамент", MessageBoxButtons.OK);
-        }
-
-        private void flowLayoutPanelMedications_Paint(object sender, PaintEventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSubstitutes_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtQuantity_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SaveMedicationsToFile()
-        {
-            var json = JsonSerializer.Serialize(medications, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(dataFilePath, json);
-        }
-
-        private void LoadMedicationsFromFile()
-        {
-            if (File.Exists(dataFilePath))
-            {
-                try
-                {
-                    string json = File.ReadAllText(dataFilePath);
-                    medications = JsonSerializer.Deserialize<List<Medication>>(json) ?? new List<Medication>();
-                }
-                catch
-                {
-                    MessageBox.Show("Не вдалося завантажити файл медикаментів.");
-                    medications = new List<Medication>();
-                }
-            }
-            else
-            {
-                medications = new List<Medication>();
-            }
-
-            RedrawMedicationList();
         }
     }
 }

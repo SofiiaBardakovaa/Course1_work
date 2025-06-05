@@ -15,24 +15,21 @@ namespace Course_work.Models
         public List<string> RecommendedMedications { get; set; }
 
         public Disease() { }
-        public Disease(string name, string shortInfo, string symptomsCsv, string proceduresCsv, string medsCsv)
+
+        public Disease(string name, string shortInfo, List<string> symptoms, List<string> procedures, List<string> meds)
         {
             Name = name;
             ShortInfo = shortInfo;
-            Symptoms = ParseList(symptomsCsv);
-            Procedures = ParseList(proceduresCsv);
-            RecommendedMedications = ParseList(medsCsv);
+            Symptoms = symptoms;
+            Procedures = procedures;
+            RecommendedMedications = meds;
         }
 
-        private List<string> ParseList(string csv)
+        public List<Medication> ResolveMedications(List<Medication> allMeds)
         {
-            return csv.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                      .Select(s => s.Trim())
-                      .ToList();
+            return allMeds
+                .Where(m => RecommendedMedications.Contains(m.Name, StringComparer.OrdinalIgnoreCase))
+                .ToList();
         }
-
-        public string GetSymptomsAsString() => string.Join(", ", Symptoms);
-        public string GetProceduresAsString() => string.Join(", ", Procedures);
-        public string GetMedsAsString() => string.Join(", ", RecommendedMedications);
     }
 }

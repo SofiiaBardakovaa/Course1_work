@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Doctor));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -42,13 +43,16 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            uC_D_Disease1 = new Course_work.DoctorUC.UC_D_Disease();
+            guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.LightSalmon;
+            panel1.BackColor = Color.MistyRose;
             panel1.Controls.Add(btnLogOut);
             panel1.Controls.Add(btnMedicine);
             panel1.Controls.Add(btnDisease);
@@ -149,11 +153,24 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(uC_D_Disease1);
             panel2.Location = new Point(276, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(1104, 766);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // uC_D_Disease1
+            // 
+            uC_D_Disease1.BackColor = Color.White;
+            uC_D_Disease1.Location = new Point(0, 0);
+            uC_D_Disease1.Name = "uC_D_Disease1";
+            uC_D_Disease1.Size = new Size(1104, 766);
+            uC_D_Disease1.TabIndex = 0;
+            // 
+            // guna2Elipse1
+            // 
+            guna2Elipse1.TargetControl = panel2;
             // 
             // Doctor
             // 
@@ -169,9 +186,11 @@
             Name = "Doctor";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Doctor";
+            Load += Doctor_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -184,5 +203,7 @@
         private Guna.UI2.WinForms.Guna2Button btnDisease;
         private Guna.UI2.WinForms.Guna2Button btnMedicine;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private DoctorUC.UC_D_Disease uC_D_Disease1;
     }
 }
