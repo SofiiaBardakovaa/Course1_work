@@ -13,15 +13,19 @@ namespace Course_work.Models
         public int Quantity { get; set; }
         public List<string> Substitutes { get; set; }
 
-        public Medication(string name, int quantity, string substitutesCsv) 
+        public static Medication FromCsv(string name, int quantity, string substitutesCsv)
         {
-            Name = name;
-            Quantity = quantity;
-            Substitutes = substitutesCsv
-                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(s => s.Trim())
-                .ToList();
+            return new Medication
+            {
+                Name = name,
+                Quantity = quantity,
+                Substitutes = substitutesCsv
+                    .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim())
+                    .ToList()
+            };
         }
+        public Medication() { }
         public string GetSubstitutesAsString()
         {
             return string.Join(", ", Substitutes);

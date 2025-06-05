@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Course_work.Models;
+using System.IO;
+using System.Text.Json;
 
 namespace Course_work.AdminUC
 {
@@ -15,9 +17,12 @@ namespace Course_work.AdminUC
     {
         private List<Medication> medications = new List<Medication>();
         private Medication selectedMedication = null;
+        private readonly string dataFilePath = "medications.json";
+
         public UC_AddUser()
         {
             InitializeComponent();
+            LoadMedicationsFromFile();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -78,6 +83,7 @@ namespace Course_work.AdminUC
             {
                 MessageBox.Show("Виберіть медикамент для видалення через кнопку Edit.");
             }
+            SaveMedicationsToFile();
 
         }
 
@@ -118,16 +124,18 @@ namespace Course_work.AdminUC
 
                 RedrawMedicationList();
                 selectedMedication = null;
+                txtSearch.Text = "";
             }
             else
             {
                 // Додавання нового
-                Medication med = new Medication(name, quantity, substitutes);
+                Medication med = Medication.FromCsv(name, quantity, substitutes);
                 medications.Add(med);
                 AddMedicationToPanel(med);
             }
 
             ClearInputFields();
+            SaveMedicationsToFile();
         }
 
         private void ClearInputFields()
@@ -205,6 +213,35 @@ namespace Course_work.AdminUC
         private void txtQuantity_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SaveMedicationsToFile()
+        {
+            var json = JsonSerializer.Serialize(medications, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(dataFilePath, json);
+        }
+
+        private void LoadMedicationsFromFile()
+        {
+            if (File.Exists(dataFilePath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(dataFilePath);
+                    medications = JsonSerializer.Deserialize<List<Medication>>(json) ?? new List<Medication>();
+                }
+                catch
+                {
+                    MessageBox.Show("Не вдалося завантажити файл медикаментів.");
+                    medications = new List<Medication>();
+                }
+            }
+            else
+            {
+                medications = new List<Medication>();
+            }
+
+            RedrawMedicationList();
         }
     }
 }
