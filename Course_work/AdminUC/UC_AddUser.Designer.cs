@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label1 = new Label();
             lblEmail = new Label();
             label7 = new Label();
@@ -67,9 +67,9 @@
             label1.Location = new Point(32, 34);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(178, 43);
+            label1.Size = new Size(376, 43);
             label1.TabIndex = 0;
-            label1.Text = "Add User";
+            label1.Text = "База Медикаментів";
             // 
             // lblEmail
             // 
@@ -106,7 +106,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.CustomizableEdges = customizableEdges15;
+            txtSearch.CustomizableEdges = customizableEdges1;
             txtSearch.DefaultText = "";
             txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -121,13 +121,13 @@
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "";
             txtSearch.SelectedText = "";
-            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtSearch.Size = new Size(340, 57);
             txtSearch.TabIndex = 9;
             // 
             // txtName
             // 
-            txtName.CustomizableEdges = customizableEdges17;
+            txtName.CustomizableEdges = customizableEdges3;
             txtName.DefaultText = "";
             txtName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -142,14 +142,15 @@
             txtName.Name = "txtName";
             txtName.PlaceholderText = "";
             txtName.SelectedText = "";
-            txtName.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtName.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtName.Size = new Size(382, 57);
             txtName.TabIndex = 12;
             txtName.TextChanged += txtName_TextChanged;
             // 
             // txtSubstitutes
             // 
-            txtSubstitutes.CustomizableEdges = customizableEdges19;
+            txtSubstitutes.AutoSize = true;
+            txtSubstitutes.CustomizableEdges = customizableEdges5;
             txtSubstitutes.DefaultText = "";
             txtSubstitutes.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSubstitutes.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -161,11 +162,13 @@
             txtSubstitutes.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSubstitutes.Location = new Point(666, 294);
             txtSubstitutes.Margin = new Padding(6, 7, 6, 7);
+            txtSubstitutes.Multiline = true;
             txtSubstitutes.Name = "txtSubstitutes";
             txtSubstitutes.PlaceholderText = "";
+            txtSubstitutes.ScrollBars = ScrollBars.Vertical;
             txtSubstitutes.SelectedText = "";
-            txtSubstitutes.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            txtSubstitutes.Size = new Size(382, 126);
+            txtSubstitutes.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtSubstitutes.Size = new Size(382, 148);
             txtSubstitutes.TabIndex = 13;
             txtSubstitutes.TextChanged += txtSubstitutes_TextChanged;
             // 
@@ -181,7 +184,7 @@
             // 
             btnDelete.BorderRadius = 18;
             btnDelete.BorderThickness = 1;
-            btnDelete.CustomizableEdges = customizableEdges21;
+            btnDelete.CustomizableEdges = customizableEdges7;
             btnDelete.DisabledState.BorderColor = Color.DarkGray;
             btnDelete.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDelete.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -193,7 +196,7 @@
             btnDelete.ImageSize = new Size(30, 30);
             btnDelete.Location = new Point(661, 630);
             btnDelete.Name = "btnDelete";
-            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnDelete.Size = new Size(150, 55);
             btnDelete.TabIndex = 17;
             btnDelete.Text = "Delete";
@@ -203,7 +206,7 @@
             // 
             btnAdd.BorderRadius = 18;
             btnAdd.BorderThickness = 1;
-            btnAdd.CustomizableEdges = customizableEdges23;
+            btnAdd.CustomizableEdges = customizableEdges9;
             btnAdd.DisabledState.BorderColor = Color.DarkGray;
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -215,7 +218,7 @@
             btnAdd.ImageSize = new Size(30, 30);
             btnAdd.Location = new Point(880, 630);
             btnAdd.Name = "btnAdd";
-            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btnAdd.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnAdd.Size = new Size(168, 55);
             btnAdd.TabIndex = 18;
             btnAdd.Text = "Add";
@@ -228,12 +231,13 @@
             // txtQuantity
             // 
             txtQuantity.BackColor = Color.Transparent;
-            txtQuantity.CustomizableEdges = customizableEdges25;
+            txtQuantity.CustomizableEdges = customizableEdges13;
             txtQuantity.Font = new Font("Segoe UI", 9F);
             txtQuantity.Location = new Point(666, 519);
             txtQuantity.Margin = new Padding(4, 5, 4, 5);
+            txtQuantity.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             txtQuantity.Name = "txtQuantity";
-            txtQuantity.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            txtQuantity.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtQuantity.Size = new Size(382, 62);
             txtQuantity.TabIndex = 19;
             txtQuantity.ValueChanged += txtQuantity_ValueChanged;
@@ -251,7 +255,7 @@
             // 
             btnSearch.BorderRadius = 18;
             btnSearch.BorderThickness = 1;
-            btnSearch.CustomizableEdges = customizableEdges27;
+            btnSearch.CustomizableEdges = customizableEdges11;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -263,7 +267,7 @@
             btnSearch.ImageSize = new Size(30, 30);
             btnSearch.Location = new Point(397, 107);
             btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnSearch.Size = new Size(206, 57);
             btnSearch.TabIndex = 21;
             btnSearch.Text = "Пошук";

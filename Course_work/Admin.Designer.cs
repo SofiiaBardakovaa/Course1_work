@@ -145,7 +145,7 @@
             btnAddNewUser.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAddNewUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAddNewUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddNewUser.FillColor = Color.CornflowerBlue;
+            btnAddNewUser.FillColor = Color.LightSeaGreen;
             btnAddNewUser.Font = new Font("Century Gothic", 10F);
             btnAddNewUser.ForeColor = Color.White;
             btnAddNewUser.HoverState.BorderColor = Color.Black;
@@ -155,7 +155,7 @@
             btnAddNewUser.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAddNewUser.Size = new Size(245, 68);
             btnAddNewUser.TabIndex = 1;
-            btnAddNewUser.Text = "Add New User";
+            btnAddNewUser.Text = "Медикаменти";
             btnAddNewUser.Click += btnAddNewUser_Click;
             // 
             // label1
@@ -189,7 +189,7 @@
             btnInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnInfo.Size = new Size(245, 68);
             btnInfo.TabIndex = 0;
-            btnInfo.Text = "Info";
+            btnInfo.Text = "Хвороби";
             btnInfo.Click += btnInfo_Click;
             // 
             // pictureBox1
@@ -221,6 +221,7 @@
             uC_AddUser1.Name = "uC_AddUser1";
             uC_AddUser1.Size = new Size(1102, 766);
             uC_AddUser1.TabIndex = 1;
+            uC_AddUser1.Load += uC_AddUser1_Load;
             // 
             // uC_Info1
             // 

@@ -137,11 +137,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.Location = new Point(903, 196);
+            label2.Location = new Point(919, 196);
             label2.Name = "label2";
-            label2.Size = new Size(104, 38);
+            label2.Size = new Size(71, 38);
             label2.TabIndex = 4;
-            label2.Text = "Sing In";
+            label2.Text = "Вхід";
             label2.Click += label2_Click;
             // 
             // label3
@@ -150,9 +150,9 @@
             label3.Font = new Font("Calibri", 14F, FontStyle.Italic);
             label3.Location = new Point(728, 276);
             label3.Name = "label3";
-            label3.Size = new Size(140, 35);
+            label3.Size = new Size(222, 35);
             label3.TabIndex = 5;
-            label3.Text = "User Name";
+            label3.Text = "Ім'я користувача";
             // 
             // label4
             // 
@@ -160,9 +160,9 @@
             label4.Font = new Font("Calibri", 14F, FontStyle.Italic);
             label4.Location = new Point(728, 423);
             label4.Name = "label4";
-            label4.Size = new Size(122, 35);
+            label4.Size = new Size(101, 35);
             label4.TabIndex = 6;
-            label4.Text = "Password";
+            label4.Text = "Пароль";
             // 
             // txtUsername
             // 
@@ -204,7 +204,7 @@
             btnSignIn.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSignIn.Size = new Size(146, 55);
             btnSignIn.TabIndex = 9;
-            btnSignIn.Text = "Sing In";
+            btnSignIn.Text = "Увійти";
             btnSignIn.Click += btnSingIn_Click;
             // 
             // MainForm

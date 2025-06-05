@@ -35,13 +35,16 @@ namespace Course_work.AdminUC
                             m.Substitutes.Any(s => s.ToLower().Contains(searchText)))
                 .ToList();
 
-            var reverseMatches = medications
-                .Where(m => m.Substitutes.Any(sub =>
-                    directMatches.Any(dm => dm.Name.Equals(sub, StringComparison.OrdinalIgnoreCase))))
-                .ToList();
+            var relatedNames = new HashSet<string>(
+                directMatches.Select(m => m.Name.ToLower())
+                .Concat(directMatches.SelectMany(m => m.Substitutes.Select(s => s.ToLower())))
+            );
 
-            var finalResults = directMatches
-                .Union(reverseMatches)
+            var finalResults = medications
+                .Where(m =>
+                    relatedNames.Contains(m.Name.ToLower()) ||
+                    m.Substitutes.Any(s => relatedNames.Contains(s.ToLower()))
+                )
                 .Distinct()
                 .ToList();
 
@@ -96,6 +99,11 @@ namespace Course_work.AdminUC
             if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("Введіть назву медикаменту");
+                return;
+            }
+            if (txtQuantity.Value <= 0)
+            {
+                MessageBox.Show("Введіть кількість препарату від 1");
                 return;
             }
 
@@ -176,7 +184,7 @@ namespace Course_work.AdminUC
         private void ShowFullInfo(Medication med)
         {
             MessageBox.Show($"Назва: {med.Name}\nКількість: {med.Quantity}\nВзаємозамінність: {med.GetSubstitutesAsString()}",
-                            "Інформація про медикамент", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            "Інформація про медикамент", MessageBoxButtons.OK);
         }
 
         private void flowLayoutPanelMedications_Paint(object sender, PaintEventArgs e)

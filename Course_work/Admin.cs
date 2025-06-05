@@ -67,5 +67,10 @@ namespace Course_work
             uC_AddUser1.Visible = true;
             uC_AddUser1.BringToFront();
         }
+
+        private void uC_AddUser1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
