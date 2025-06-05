@@ -55,6 +55,17 @@ namespace Course_work
         private void Admin_Load(object sender, EventArgs e)
         {
             btnInfo.PerformClick();
+            uC_AddUser1.Visible = false;
+        }
+
+        private void btnAddNewUser_Click(object sender, EventArgs e)
+        {
+            ResetButtonStyles();
+
+            btnAddNewUser.FillColor = Color.RoyalBlue;
+
+            uC_AddUser1.Visible = true;
+            uC_AddUser1.BringToFront();
         }
     }
 }

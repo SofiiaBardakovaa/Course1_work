@@ -41,7 +41,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel1 = new Panel();
-            label2 = new Label();
             btnLogOut = new Guna.UI2.WinForms.Guna2Button();
             btnProfile = new Guna.UI2.WinForms.Guna2Button();
             btnViewUser = new Guna.UI2.WinForms.Guna2Button();
@@ -50,8 +49,11 @@
             btnInfo = new Guna.UI2.WinForms.Guna2Button();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            uC_AddUser1 = new Course_work.AdminUC.UC_AddUser();
             uC_Info1 = new Course_work.AdminUC.UC_Info();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -60,7 +62,6 @@
             // panel1
             // 
             panel1.BackColor = Color.LightCyan;
-            panel1.Controls.Add(label2);
             panel1.Controls.Add(btnLogOut);
             panel1.Controls.Add(btnProfile);
             panel1.Controls.Add(btnViewUser);
@@ -72,18 +73,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(275, 769);
             panel1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.ForeColor = Color.Blue;
-            label2.Location = new Point(51, 12);
-            label2.Name = "label2";
-            label2.Size = new Size(170, 38);
-            label2.TabIndex = 0;
-            label2.Text = "User Name";
-            label2.Click += label2_Click;
             // 
             // btnLogOut
             // 
@@ -100,7 +89,7 @@
             btnLogOut.HoverState.FillColor = Color.RoyalBlue;
             btnLogOut.Image = (Image)resources.GetObject("btnLogOut.Image");
             btnLogOut.ImageSize = new Size(30, 30);
-            btnLogOut.Location = new Point(12, 669);
+            btnLogOut.Location = new Point(12, 611);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLogOut.Size = new Size(245, 68);
@@ -121,7 +110,7 @@
             btnProfile.ForeColor = Color.White;
             btnProfile.HoverState.BorderColor = Color.Black;
             btnProfile.HoverState.FillColor = Color.RoyalBlue;
-            btnProfile.Location = new Point(12, 577);
+            btnProfile.Location = new Point(12, 515);
             btnProfile.Name = "btnProfile";
             btnProfile.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnProfile.Size = new Size(245, 68);
@@ -141,7 +130,7 @@
             btnViewUser.ForeColor = Color.White;
             btnViewUser.HoverState.BorderColor = Color.Black;
             btnViewUser.HoverState.FillColor = Color.RoyalBlue;
-            btnViewUser.Location = new Point(12, 485);
+            btnViewUser.Location = new Point(12, 426);
             btnViewUser.Name = "btnViewUser";
             btnViewUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnViewUser.Size = new Size(245, 68);
@@ -161,19 +150,20 @@
             btnAddNewUser.ForeColor = Color.White;
             btnAddNewUser.HoverState.BorderColor = Color.Black;
             btnAddNewUser.HoverState.FillColor = Color.RoyalBlue;
-            btnAddNewUser.Location = new Point(12, 390);
+            btnAddNewUser.Location = new Point(12, 332);
             btnAddNewUser.Name = "btnAddNewUser";
             btnAddNewUser.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAddNewUser.Size = new Size(245, 68);
             btnAddNewUser.TabIndex = 1;
             btnAddNewUser.Text = "Add New User";
+            btnAddNewUser.Click += btnAddNewUser_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Cambria", 14F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(85, 245);
+            label1.Location = new Point(85, 198);
             label1.Name = "label1";
             label1.Size = new Size(101, 33);
             label1.TabIndex = 1;
@@ -193,7 +183,7 @@
             btnInfo.ForeColor = Color.White;
             btnInfo.HoverState.BorderColor = Color.Black;
             btnInfo.HoverState.FillColor = Color.RoyalBlue;
-            btnInfo.Location = new Point(12, 301);
+            btnInfo.Location = new Point(12, 244);
             btnInfo.Name = "btnInfo";
             btnInfo.PressedColor = Color.RoyalBlue;
             btnInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
@@ -205,7 +195,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(27, 62);
+            pictureBox1.Location = new Point(31, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(214, 200);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -214,12 +204,23 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(uC_AddUser1);
             panel2.Controls.Add(uC_Info1);
             panel2.Location = new Point(278, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(1102, 766);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // uC_AddUser1
+            // 
+            uC_AddUser1.BackColor = Color.White;
+            uC_AddUser1.Font = new Font("Microsoft Sans Serif", 12F);
+            uC_AddUser1.Location = new Point(0, 0);
+            uC_AddUser1.Margin = new Padding(4, 3, 4, 3);
+            uC_AddUser1.Name = "uC_AddUser1";
+            uC_AddUser1.Size = new Size(1102, 766);
+            uC_AddUser1.TabIndex = 1;
             // 
             // uC_Info1
             // 
@@ -232,6 +233,14 @@
             // guna2Elipse1
             // 
             guna2Elipse1.TargetControl = panel2;
+            // 
+            // guna2Elipse2
+            // 
+            guna2Elipse2.TargetControl = panel2;
+            // 
+            // guna2Elipse3
+            // 
+            guna2Elipse3.TargetControl = panel2;
             // 
             // Admin
             // 
@@ -264,9 +273,10 @@
         private Guna.UI2.WinForms.Guna2Button btnInfo;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private Guna.UI2.WinForms.Guna2Button btnProfile;
-        private Label label2;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private AdminUC.UC_Info uC_Info1;
-
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
+        private AdminUC.UC_AddUser uC_AddUser1;
     }
 }
