@@ -45,6 +45,7 @@ namespace Course_work.AdminUC
 
             foreach (var d in results)
                 AddDiseaseToPanel(d);
+
         }
 
         private void AddDiseaseToPanel(Disease d)
@@ -69,45 +70,27 @@ namespace Course_work.AdminUC
 
             Button btnInfo = new Button
             {
-                Text = "Інфо",
+                Text = "Редагувати",
                 Location = new Point(10, 80),
-                Size = new Size(100, 30)
+                Size = new Size(100, 50)
             };
             btnInfo.Click += (s, e) => ShowFullInfo(d);
-
-            Button btnEdit = new Button
-            {
-                Text = "Edit",
-                Location = new Point(panel.Width - 70, 10),
-                Size = new Size(60, 30)
-            };
-            btnEdit.Click += (s, e) => LoadDiseaseForEditing(d);
 
             panel.Controls.Add(lblName);
             panel.Controls.Add(lblShortInfo);
             panel.Controls.Add(btnInfo);
-            panel.Controls.Add(btnEdit);
             flowLayoutPanelDiseases.Controls.Add(panel);
         }
 
-        private void LoadDiseaseForEditing(Disease d)
-        {
-            selectedDisease = d;
-            txtName.Text = d.Name;
-            txtShortInfo.Text = d.ShortInfo;
-            txtSymptomsAdd.Text = string.Join(", ", d.Symptoms);
-            txtProceduresAdd.Text = string.Join(", ", d.Procedures);
-            txtMedicinesAdd.Text = string.Join(", ", d.RecommendedMedications);
-        }
-
-
         private void ShowFullInfo(Disease d)
         {
-            MessageBox.Show(
-            $"Назва: {d.Name}\nКоротка інфо: {d.ShortInfo}\nСимптоми: {string.Join(", ", d.Symptoms)}\n" +
-            $"Процедури: {string.Join(", ", d.Procedures)}\nЛіки: {string.Join(", ", d.RecommendedMedications)}",
-            "Інформація про хворобу",
-            MessageBoxButtons.OK);
+            var form = new DiseaseDetailsForm(d, diseaseManager);
+            form.LoadDisease(d);
+            //form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.Yes)
+            {
+                RedrawDiseaseList(); 
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -159,7 +142,12 @@ namespace Course_work.AdminUC
             var symptomsList = symptoms.Split(',').Select(s => s.Trim()).Where(s => s != "").ToList();
             var proceduresList = procedures.Split(',').Select(p => p.Trim()).Where(p => p != "").ToList();
             var medList = meds.Split(',').Select(m => m.Trim()).Where(m => m != "").ToList();
-            var newDisease = new Disease(name, shortInfo, symptomsList, proceduresList, medList);
+            var recommendedMeds = medList
+            .Select(m => new RecommendedMedication { Name = m, Quantity = 1 }) 
+            .ToList();
+
+            var newDisease = new Disease(name, shortInfo, symptomsList, proceduresList, recommendedMeds);
+
 
             if (selectedDisease != null)
             {

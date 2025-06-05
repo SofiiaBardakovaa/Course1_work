@@ -43,10 +43,13 @@ namespace Course_work.Models
         public List<Disease> Search(string name, List<string> symptoms, List<string> procedures)
         {
             name = name?.ToLower() ?? "";
+
             return Diseases.Where(d =>
                 (string.IsNullOrWhiteSpace(name) || d.Name.ToLower().Contains(name)) &&
-                (symptoms.Count == 0 || symptoms.All(f => d.Symptoms.Any(s => s.ToLower().Contains(f)))) &&
-                (procedures.Count == 0 || procedures.All(f => d.Procedures.Any(p => p.ToLower().Contains(f))))
+                (symptoms.Count == 0 || symptoms.Any(f =>
+                    d.Symptoms.Any(s => s.ToLower().Contains(f)))) &&
+                (procedures.Count == 0 || procedures.Any(f =>
+                    d.Procedures.Any(p => p.ToLower().Contains(f))))
             ).ToList();
         }
 

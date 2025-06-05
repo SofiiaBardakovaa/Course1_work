@@ -12,11 +12,11 @@ namespace Course_work.Models
         public string ShortInfo { get; set; }
         public List<string> Symptoms { get; set; }
         public List<string> Procedures { get; set; }
-        public List<string> RecommendedMedications { get; set; }
+        public List<RecommendedMedication> RecommendedMedications { get; set; } = new();
 
         public Disease() { }
 
-        public Disease(string name, string shortInfo, List<string> symptoms, List<string> procedures, List<string> meds)
+        public Disease(string name, string shortInfo, List<string> symptoms, List<string> procedures, List<RecommendedMedication> meds)
         {
             Name = name;
             ShortInfo = shortInfo;
@@ -28,7 +28,7 @@ namespace Course_work.Models
         public List<Medication> ResolveMedications(List<Medication> allMeds)
         {
             return allMeds
-                .Where(m => RecommendedMedications.Contains(m.Name, StringComparer.OrdinalIgnoreCase))
+                .Where(m => RecommendedMedications.Any(rm => rm.Name.Equals(m.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
     }

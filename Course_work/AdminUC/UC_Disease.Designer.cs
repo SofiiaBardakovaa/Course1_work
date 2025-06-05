@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -60,7 +58,6 @@
             txtName = new Guna.UI2.WinForms.Guna2TextBox();
             label7 = new Label();
             label8 = new Label();
-            btnDelete = new Guna.UI2.WinForms.Guna2Button();
             btnAdd = new Guna.UI2.WinForms.Guna2Button();
             txtShortInfo = new Guna.UI2.WinForms.Guna2TextBox();
             txtSymptoms = new Guna.UI2.WinForms.Guna2TextBox();
@@ -92,7 +89,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.CustomizableEdges = customizableEdges21;
+            txtSearch.CustomizableEdges = customizableEdges19;
             txtSearch.DefaultText = "";
             txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -107,7 +104,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "";
             txtSearch.SelectedText = "";
-            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges20;
             txtSearch.Size = new Size(288, 57);
             txtSearch.TabIndex = 10;
             // 
@@ -115,7 +112,7 @@
             // 
             btnSearch.BorderRadius = 18;
             btnSearch.BorderThickness = 1;
-            btnSearch.CustomizableEdges = customizableEdges19;
+            btnSearch.CustomizableEdges = customizableEdges17;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -127,7 +124,7 @@
             btnSearch.ImageSize = new Size(30, 30);
             btnSearch.Location = new Point(328, 275);
             btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btnSearch.Size = new Size(206, 57);
             btnSearch.TabIndex = 22;
             btnSearch.Text = "Пошук";
@@ -154,7 +151,7 @@
             // 
             // txtName
             // 
-            txtName.CustomizableEdges = customizableEdges17;
+            txtName.CustomizableEdges = customizableEdges15;
             txtName.DefaultText = "";
             txtName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -169,7 +166,7 @@
             txtName.Name = "txtName";
             txtName.PlaceholderText = "";
             txtName.SelectedText = "";
-            txtName.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtName.ShadowDecoration.CustomizableEdges = customizableEdges16;
             txtName.Size = new Size(274, 40);
             txtName.TabIndex = 25;
             // 
@@ -195,28 +192,6 @@
             label8.TabIndex = 28;
             label8.Text = "Симптоми";
             label8.Click += label8_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BorderRadius = 18;
-            btnDelete.BorderThickness = 1;
-            btnDelete.CustomizableEdges = customizableEdges15;
-            btnDelete.DisabledState.BorderColor = Color.DarkGray;
-            btnDelete.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnDelete.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnDelete.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnDelete.FillColor = Color.FromArgb(192, 192, 255);
-            btnDelete.Font = new Font("Century Gothic", 11F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnDelete.ForeColor = Color.Black;
-            btnDelete.HoverState.FillColor = Color.White;
-            btnDelete.ImageSize = new Size(30, 30);
-            btnDelete.Location = new Point(687, 689);
-            btnDelete.Name = "btnDelete";
-            btnDelete.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            btnDelete.Size = new Size(150, 55);
-            btnDelete.TabIndex = 29;
-            btnDelete.Text = "Delete";
-            btnDelete.Click += btnDelete_Click;
             // 
             // btnAdd
             // 
@@ -455,7 +430,6 @@
             Controls.Add(txtSymptoms);
             Controls.Add(txtShortInfo);
             Controls.Add(btnAdd);
-            Controls.Add(btnDelete);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(txtName);
@@ -480,7 +454,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtName;
         private Label label7;
         private Label label8;
-        private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Label label3;
         private Label label1;
