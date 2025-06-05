@@ -25,6 +25,12 @@ namespace Course_work
                 am.Show();
                 this.Hide();
             }
+            else if (txtUsername.Text == "drSofiia" && txtPassword.Text == "12345")
+            {
+                Doctor am = new Doctor();
+                am.Show();
+                this.Hide();
+            }
             else
             {
                 MessageBox.Show("Invalid username or password. Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

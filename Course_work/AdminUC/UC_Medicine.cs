@@ -12,13 +12,13 @@ using Course_work.Models;
 
 namespace Course_work.AdminUC
 {
-    public partial class UC_Info : UserControl
+    public partial class UC_Medicine : UserControl
     {
         private List<Disease> diseases = new List<Disease>();
         private Disease selectedDisease = null;
         private readonly string dataFilePath = "diseases.json";
 
-        public UC_Info()
+        public UC_Medicine()
         {
             InitializeComponent();
             LoadDiseasesFromFile();

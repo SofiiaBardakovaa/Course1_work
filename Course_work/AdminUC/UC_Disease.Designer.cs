@@ -1,6 +1,6 @@
 ﻿namespace Course_work.AdminUC
 {
-    partial class UC_AddUser
+    partial class UC_Disease
     {
         /// <summary> 
         /// Required designer variable.

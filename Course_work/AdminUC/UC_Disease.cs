@@ -13,13 +13,13 @@ using System.Text.Json;
 
 namespace Course_work.AdminUC
 {
-    public partial class UC_AddUser : UserControl
+    public partial class UC_Disease : UserControl
     {
         private List<Medication> medications = new List<Medication>();
         private Medication selectedMedication = null;
         private readonly string dataFilePath = "medications.json";
 
-        public UC_AddUser()
+        public UC_Disease()
         {
             InitializeComponent();
             LoadMedicationsFromFile();

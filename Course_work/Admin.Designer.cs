@@ -49,8 +49,8 @@
             btnInfo = new Guna.UI2.WinForms.Guna2Button();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
-            uC_AddUser1 = new Course_work.AdminUC.UC_AddUser();
-            uC_Info1 = new Course_work.AdminUC.UC_Info();
+            uC_AddUser1 = new Course_work.AdminUC.UC_Disease();
+            uC_Info1 = new Course_work.AdminUC.UC_Medicine();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(components);
             guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(components);
@@ -274,10 +274,10 @@
         private Guna.UI2.WinForms.Guna2Button btnInfo;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private Guna.UI2.WinForms.Guna2Button btnProfile;
-        private AdminUC.UC_Info uC_Info1;
+        private AdminUC.UC_Medicine uC_Info1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
-        private AdminUC.UC_AddUser uC_AddUser1;
+        private AdminUC.UC_Disease uC_AddUser1;
     }
 }
