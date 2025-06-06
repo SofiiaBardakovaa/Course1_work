@@ -86,7 +86,6 @@ namespace Course_work.AdminUC
         {
             var form = new DiseaseDetailsForm(d, diseaseManager);
             form.LoadDisease(d);
-            form.ShowDialog();
             if (form.ShowDialog() == DialogResult.Yes)
             {
                 RedrawDiseaseList();

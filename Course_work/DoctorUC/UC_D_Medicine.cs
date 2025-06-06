@@ -31,6 +31,55 @@ namespace Course_work.DoctorUC
 
         }
 
+        public void LoadPrescriptionFromDisease(Disease disease)
+        {
+            currentPrescription.Medications.Clear();
+            prescriptionList.Clear();
+            pnlPresctiptionList.Controls.Clear();
+
+            foreach (var rec in disease.RecommendedMedications)
+            {
+                var med = medicationManager.Medications.FirstOrDefault(m => m.Name == rec.Name);
+
+                if (med == null)
+                {
+                    med = medicationManager.Medications.FirstOrDefault(m =>
+                        m.Substitutes.Any(sub => sub.Equals(rec.Name, StringComparison.OrdinalIgnoreCase)));
+
+                    if (med != null)
+                    {
+                        MessageBox.Show($"⚠ Препарат «{rec.Name}» відсутній на складі. Заміна на «{med.Name}».", "Заміна");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"⚠ Препарат «{rec.Name}» та його замінники відсутні на складі.");
+                        continue;
+                    }
+                }
+
+                if (rec.Quantity > med.Quantity)
+                {
+                    MessageBox.Show($"⚠ Недостатньо препарату «{med.Name}»: потрібно {rec.Quantity}, є {med.Quantity}.");
+                    continue;
+                }
+
+                var item = new PrescriptionItem
+                {
+                    Name = med.Name,
+                    Quantity = rec.Quantity
+                };
+
+                prescriptionList.Add(item);
+                currentPrescription.Medications.Add(item);
+                AddPrescriptionItemToPanel(item);
+
+                med.Quantity -= rec.Quantity;
+            }
+
+            medicationManager.SaveToFile();
+            RedrawMedicationList(); 
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchText = txtSearch.Text.Trim().ToLower();
@@ -237,7 +286,7 @@ namespace Course_work.DoctorUC
                 var med = medicationManager.Medications.FirstOrDefault(m => m.Name == item.Name);
                 if (med != null)
                 {
-                    med.Quantity += item.Quantity; // 🔺 повертаємо на склад
+                    med.Quantity += item.Quantity; 
                     medicationManager.Save();
                 }
 

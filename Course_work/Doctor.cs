@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Course_work.AdminUC;
+using Course_work.DoctorUC;
 
 namespace Course_work
 {

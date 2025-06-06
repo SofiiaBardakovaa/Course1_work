@@ -15,14 +15,16 @@ namespace Course_work
 {
     public partial class DoctorDiseaseDetailsForm : Form
     {
+        private UC_D_Medicine uc_D_Medicine;
         private Disease originalDisease;
         private DiseaseManager diseaseManager;
 
-        public DoctorDiseaseDetailsForm(Disease originalDisease, DiseaseManager manager)
+        public DoctorDiseaseDetailsForm(Disease originalDisease, DiseaseManager manager, UC_D_Medicine uc_D_Medicine)
         {
             InitializeComponent();
             this.originalDisease = originalDisease;
             this.diseaseManager = manager;
+            this.uc_D_Medicine = uc_D_Medicine;
 
             dGridViewMedicines.Columns.Clear();
             dGridViewMedicines.Columns.Add("Name", "Назва препарату");
@@ -57,7 +59,8 @@ namespace Course_work
 
         private void btnGotoFormPrescription_Click(object sender, EventArgs e)
         {
-            
+            uc_D_Medicine.LoadPrescriptionFromDisease(originalDisease);
+            this.Close();
         }
     }
 }

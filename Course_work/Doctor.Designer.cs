@@ -223,6 +223,6 @@
         private DoctorUC.UC_D_Disease uC_D_Disease1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
-        private DoctorUC.UC_D_Medicine uC_D_Medicine1;
+        public DoctorUC.UC_D_Medicine uC_D_Medicine1;
     }
 }

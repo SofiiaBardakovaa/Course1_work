@@ -6,6 +6,8 @@ namespace Course_work
 {
     public partial class MainForm : Form
     {
+        public object UC_D_MedicineInstance { get; internal set; }
+
         public MainForm()
         {
             InitializeComponent();

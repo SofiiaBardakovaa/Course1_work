@@ -36,14 +36,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel1 = new Panel();
             btnLogOut = new Guna.UI2.WinForms.Guna2Button();
-            btnProfile = new Guna.UI2.WinForms.Guna2Button();
-            btnViewUser = new Guna.UI2.WinForms.Guna2Button();
             btnAddNewUser = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
             btnInfo = new Guna.UI2.WinForms.Guna2Button();
@@ -63,8 +57,6 @@
             // 
             panel1.BackColor = Color.LightCyan;
             panel1.Controls.Add(btnLogOut);
-            panel1.Controls.Add(btnProfile);
-            panel1.Controls.Add(btnViewUser);
             panel1.Controls.Add(btnAddNewUser);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnInfo);
@@ -89,7 +81,7 @@
             btnLogOut.HoverState.FillColor = Color.RoyalBlue;
             btnLogOut.Image = (Image)resources.GetObject("btnLogOut.Image");
             btnLogOut.ImageSize = new Size(30, 30);
-            btnLogOut.Location = new Point(12, 611);
+            btnLogOut.Location = new Point(12, 677);
             btnLogOut.Name = "btnLogOut";
             btnLogOut.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnLogOut.Size = new Size(245, 68);
@@ -97,50 +89,10 @@
             btnLogOut.Text = "Log Out";
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // btnProfile
-            // 
-            btnProfile.BorderRadius = 10;
-            btnProfile.CustomizableEdges = customizableEdges3;
-            btnProfile.DisabledState.BorderColor = Color.DarkGray;
-            btnProfile.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnProfile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnProfile.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnProfile.FillColor = Color.CornflowerBlue;
-            btnProfile.Font = new Font("Century Gothic", 10F);
-            btnProfile.ForeColor = Color.White;
-            btnProfile.HoverState.BorderColor = Color.Black;
-            btnProfile.HoverState.FillColor = Color.RoyalBlue;
-            btnProfile.Location = new Point(12, 515);
-            btnProfile.Name = "btnProfile";
-            btnProfile.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnProfile.Size = new Size(245, 68);
-            btnProfile.TabIndex = 3;
-            btnProfile.Text = "Profile";
-            // 
-            // btnViewUser
-            // 
-            btnViewUser.BorderRadius = 10;
-            btnViewUser.CustomizableEdges = customizableEdges5;
-            btnViewUser.DisabledState.BorderColor = Color.DarkGray;
-            btnViewUser.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnViewUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnViewUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnViewUser.FillColor = Color.CornflowerBlue;
-            btnViewUser.Font = new Font("Century Gothic", 10F);
-            btnViewUser.ForeColor = Color.White;
-            btnViewUser.HoverState.BorderColor = Color.Black;
-            btnViewUser.HoverState.FillColor = Color.RoyalBlue;
-            btnViewUser.Location = new Point(12, 426);
-            btnViewUser.Name = "btnViewUser";
-            btnViewUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnViewUser.Size = new Size(245, 68);
-            btnViewUser.TabIndex = 2;
-            btnViewUser.Text = "View User";
-            // 
             // btnAddNewUser
             // 
             btnAddNewUser.BorderRadius = 10;
-            btnAddNewUser.CustomizableEdges = customizableEdges7;
+            btnAddNewUser.CustomizableEdges = customizableEdges3;
             btnAddNewUser.DisabledState.BorderColor = Color.DarkGray;
             btnAddNewUser.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAddNewUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -150,9 +102,9 @@
             btnAddNewUser.ForeColor = Color.White;
             btnAddNewUser.HoverState.BorderColor = Color.Black;
             btnAddNewUser.HoverState.FillColor = Color.RoyalBlue;
-            btnAddNewUser.Location = new Point(12, 332);
+            btnAddNewUser.Location = new Point(12, 349);
             btnAddNewUser.Name = "btnAddNewUser";
-            btnAddNewUser.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnAddNewUser.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnAddNewUser.Size = new Size(245, 68);
             btnAddNewUser.TabIndex = 1;
             btnAddNewUser.Text = "Медикаменти";
@@ -173,7 +125,7 @@
             // 
             btnInfo.BorderRadius = 10;
             btnInfo.CheckedState.FillColor = Color.RoyalBlue;
-            btnInfo.CustomizableEdges = customizableEdges9;
+            btnInfo.CustomizableEdges = customizableEdges5;
             btnInfo.DisabledState.BorderColor = Color.DarkGray;
             btnInfo.DisabledState.CustomBorderColor = Color.DarkGray;
             btnInfo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -183,10 +135,10 @@
             btnInfo.ForeColor = Color.White;
             btnInfo.HoverState.BorderColor = Color.Black;
             btnInfo.HoverState.FillColor = Color.RoyalBlue;
-            btnInfo.Location = new Point(12, 244);
+            btnInfo.Location = new Point(12, 258);
             btnInfo.Name = "btnInfo";
             btnInfo.PressedColor = Color.RoyalBlue;
-            btnInfo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnInfo.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnInfo.Size = new Size(245, 68);
             btnInfo.TabIndex = 0;
             btnInfo.Text = "Хвороби";
@@ -269,11 +221,9 @@
         private Panel panel2;
         private Label label1;
         private PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2Button btnViewUser;
         private Guna.UI2.WinForms.Guna2Button btnAddNewUser;
         private Guna.UI2.WinForms.Guna2Button btnInfo;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
-        private Guna.UI2.WinForms.Guna2Button btnProfile;
         private AdminUC.UC_Disease uC_Info1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;

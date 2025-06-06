@@ -93,7 +93,8 @@ namespace Course_work.DoctorUC
 
         private void ShowFullInfo(Disease d)
         {
-            var form = new DoctorDiseaseDetailsForm(d, diseaseManager);
+            var doctorForm = (Doctor)this.ParentForm;
+            var form = new DoctorDiseaseDetailsForm(d, diseaseManager, doctorForm.uC_D_Medicine1);
             form.LoadDisease(d);
             form.ShowDialog();
         }
