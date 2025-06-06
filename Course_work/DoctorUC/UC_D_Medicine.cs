@@ -116,20 +116,21 @@ namespace Course_work.DoctorUC
             {
                 Text = med.Name,
                 Location = new Point(10, 10),
-                AutoSize = true
+                AutoSize = true,
+                Font = new Font("Segoe UI", 13, FontStyle.Bold)
             };
 
             Label lblQty = new Label
             {
                 Text = $"К-сть на складі: {med.Quantity}",
-                Location = new Point(10, 30),
+                Location = new Point(10, 45),
                 AutoSize = true
             };
 
             CheckBox checkBox = new CheckBox
             {
                 Text = "Обрати",
-                Location = new Point(10, 60),
+                Location = new Point(20, 85),
                 AutoSize = true
             };
 
@@ -146,9 +147,13 @@ namespace Course_work.DoctorUC
             Button btnInfo = new Button
             {
                 Text = "Інфо",
-                Location = new Point(150, 60),
-                Width = 100
+                Location = new Point(300, 50),
+                Width = 200,
+                Height = 60
             };
+            btnInfo.FlatAppearance.BorderColor = Color.Black;
+            btnInfo.FlatAppearance.BorderSize = 2;
+            btnInfo.FlatStyle = FlatStyle.Flat;
             btnInfo.Click += (s, e) => ShowFullInfo(med);
 
             panel.Controls.Add(lblName);
@@ -243,23 +248,24 @@ namespace Course_work.DoctorUC
             Panel panel = new Panel
             {
                 BorderStyle = BorderStyle.FixedSingle,
-                Width = pnlPresctiptionList.Width - 25,
-                Height = 50,
+                Width = pnlPresctiptionList.Width - 40,
+                Height = 100,
                 Margin = new Padding(5)
             };
 
             Label lbl = new Label
             {
                 Text = $"{item.Name} — {item.Quantity} шт.",
-                Location = new Point(10, 15),
-                AutoSize = true
+                Location = new Point(10, 10),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 11, FontStyle.Bold)
             };
 
             Button btnEdit = new Button
             {
                 Text = "Обрати",
-                Size = new Size(75, 25),
-                Location = new Point(panel.Width - 160, 10)
+                Size = new Size(110, 40),
+                Location = new Point(10, 44)
             };
             btnEdit.Click += (s, e) =>
             {
@@ -294,8 +300,8 @@ namespace Course_work.DoctorUC
             Button btnDelete = new Button
             {
                 Text = "Видалити",
-                Size = new Size(75, 25),
-                Location = new Point(panel.Width - 80, 10)
+                Size = new Size(110, 40),
+                Location = new Point(130, 44)
             };
             btnDelete.Click += (s, e) =>
             {
