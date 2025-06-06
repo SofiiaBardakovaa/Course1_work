@@ -128,39 +128,46 @@ namespace Course_work.DoctorUC
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            foreach (var pair in selectedCheckBoxes)
+                   var selectedPairs = selectedCheckBoxes
+                .Where(pair => pair.Key.Checked)
+                .ToList(); 
+
+            foreach (var pair in selectedPairs)
             {
                 CheckBox cb = pair.Key;
                 Medication med = pair.Value;
+                int qty = (int)btnNumQuantity.Value;
 
-                if (cb.Checked)
+                if (qty > med.Quantity)
                 {
-                    int qty = (int)btnNumQuantity.Value;
-
-                    if (qty > med.Quantity)
-                    {
-                        MessageBox.Show($"Неможливо додати {qty} шт. — на складі лише {med.Quantity}.");
-                        continue;
-                    }
-
-                    if (prescriptionList.Any(p => p.Name == med.Name))
-                    {
-                        MessageBox.Show($"Препарат «{med.Name}» вже доданий до рецепту.");
-                        continue;
-                    }
-
-                    var item = new PrescriptionItem
-                    {
-                        Name = med.Name,
-                        Quantity = qty
-                    };
-
-                    prescriptionList.Add(item);
-                    currentPrescription.Medications.Add(item);
-                    AddPrescriptionItemToPanel(item);
-                    cb.Checked = false;
+                    MessageBox.Show($"Неможливо додати {qty} шт. — на складі лише {med.Quantity}.");
+                    continue;
                 }
+
+                if (prescriptionList.Any(p => p.Name == med.Name))
+                {
+                    MessageBox.Show($"Препарат «{med.Name}» вже доданий до рецепту.");
+                    continue;
+                }
+
+                var item = new PrescriptionItem
+                {
+                    Name = med.Name,
+                    Quantity = qty
+                };
+
+                prescriptionList.Add(item);
+                currentPrescription.Medications.Add(item);
+
+                med.Quantity -= qty;
+                medicationManager.Save(); 
+
+                AddPrescriptionItemToPanel(item);
+                cb.Checked = false;
+                btnNumQuantity.Value = 1;
             }
+
+            RedrawMedicationList(); 
         }
 
         private void AddPrescriptionItemToPanel(PrescriptionItem item)
@@ -196,14 +203,22 @@ namespace Course_work.DoctorUC
                 if (int.TryParse(input, out int newQty))
                 {
                     var med = medicationManager.Medications.FirstOrDefault(m => m.Name == item.Name);
-                    if (med != null && newQty <= med.Quantity && newQty > 0)
+                    if (med != null)
                     {
-                        item.Quantity = newQty;
-                        lbl.Text = $"{item.Name} — {item.Quantity} шт.";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Невірна кількість або перевищує наявну.");
+                        int delta = newQty - item.Quantity;
+
+                        if (med.Quantity >= delta && newQty > 0)
+                        {
+                            med.Quantity -= delta;
+                            item.Quantity = newQty;
+                            lbl.Text = $"{item.Name} — {item.Quantity} шт.";
+                            medicationManager.Save();
+                            RedrawMedicationList();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Невірна кількість або перевищує наявну.");
+                        }
                     }
                 }
             };
@@ -217,7 +232,17 @@ namespace Course_work.DoctorUC
             btnDelete.Click += (s, e) =>
             {
                 prescriptionList.Remove(item);
+                currentPrescription.Medications.Remove(item);
+
+                var med = medicationManager.Medications.FirstOrDefault(m => m.Name == item.Name);
+                if (med != null)
+                {
+                    med.Quantity += item.Quantity; // 🔺 повертаємо на склад
+                    medicationManager.Save();
+                }
+
                 pnlPresctiptionList.Controls.Remove(panel);
+                RedrawMedicationList();
             };
 
             panel.Controls.Add(lbl);
@@ -279,6 +304,13 @@ namespace Course_work.DoctorUC
                 }
 
                 MessageBox.Show("Рецепт успішно збережено!", "Успіх");
+                prescriptionList.Clear();
+                currentPrescription = new Prescription();
+                pnlPresctiptionList.Controls.Clear();
+                btnNumQuantity.Value = 1;
+                txtPatientName.Text = "";
+                guna2DateTimePicker1.Value = DateTime.Now;
+                RedrawMedicationList();
             }
         }
     }

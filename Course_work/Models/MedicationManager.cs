@@ -74,6 +74,11 @@ namespace Course_work.Models
             File.WriteAllText(filePath, json);
         }
 
+        public void Save()
+        {
+            SaveToFile();
+        }
+
         public void LoadFromFile()
         {
             if (File.Exists(filePath))
