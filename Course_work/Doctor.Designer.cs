@@ -45,6 +45,9 @@
             panel2 = new Panel();
             uC_D_Disease1 = new Course_work.DoctorUC.UC_D_Disease();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            guna2Elipse3 = new Guna.UI2.WinForms.Guna2Elipse(components);
+            uC_D_Medicine1 = new Course_work.DoctorUC.UC_D_Medicine();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -153,6 +156,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(uC_D_Medicine1);
             panel2.Controls.Add(uC_D_Disease1);
             panel2.Location = new Point(276, 2);
             panel2.Name = "panel2";
@@ -171,6 +175,18 @@
             // guna2Elipse1
             // 
             guna2Elipse1.TargetControl = panel2;
+            // 
+            // guna2Elipse3
+            // 
+            guna2Elipse3.TargetControl = panel2;
+            // 
+            // uC_D_Medicine1
+            // 
+            uC_D_Medicine1.BackColor = Color.White;
+            uC_D_Medicine1.Location = new Point(0, -2);
+            uC_D_Medicine1.Name = "uC_D_Medicine1";
+            uC_D_Medicine1.Size = new Size(1104, 766);
+            uC_D_Medicine1.TabIndex = 1;
             // 
             // Doctor
             // 
@@ -205,5 +221,8 @@
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private DoctorUC.UC_D_Disease uC_D_Disease1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse3;
+        private DoctorUC.UC_D_Medicine uC_D_Medicine1;
     }
 }

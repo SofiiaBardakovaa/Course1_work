@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Course_work.AdminUC;
 
 namespace Course_work
 {
@@ -20,6 +21,7 @@ namespace Course_work
         private void Doctor_Load(object sender, EventArgs e)
         {
             btnDisease.PerformClick();
+
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -52,8 +54,15 @@ namespace Course_work
 
             btnMedicine.FillColor = Color.Crimson;
 
-            //uC_AddUser1.Visible = true;
-            //uC_AddUser1.BringToFront();
+            uC_D_Medicine1.Visible = true;
+            uC_D_Medicine1.BringToFront();
+        }
+
+        public void ShowMedicineControl()
+        {
+            uC_D_Disease1.Visible = false;
+            uC_D_Medicine1.Visible = true;
+            uC_D_Medicine1.BringToFront();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

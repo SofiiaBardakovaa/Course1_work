@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Course_work.AdminUC;
+using Course_work.DoctorUC;
 using Course_work.Models;
 
 namespace Course_work
@@ -55,7 +57,7 @@ namespace Course_work
 
         private void btnGotoFormPrescription_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
