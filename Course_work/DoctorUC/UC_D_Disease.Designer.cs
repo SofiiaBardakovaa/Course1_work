@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             label2 = new Label();
             label1 = new Label();
@@ -77,7 +77,7 @@
             // txtSymptoms
             // 
             txtSymptoms.AutoSize = true;
-            txtSymptoms.CustomizableEdges = customizableEdges15;
+            txtSymptoms.CustomizableEdges = customizableEdges7;
             txtSymptoms.DefaultText = "";
             txtSymptoms.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSymptoms.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -94,9 +94,10 @@
             txtSymptoms.PlaceholderText = "";
             txtSymptoms.ScrollBars = ScrollBars.Vertical;
             txtSymptoms.SelectedText = "";
-            txtSymptoms.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtSymptoms.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtSymptoms.Size = new Size(492, 105);
             txtSymptoms.TabIndex = 36;
+            txtSymptoms.TextChanged += txtSymptoms_TextChanged;
             // 
             // label3
             // 
@@ -112,7 +113,7 @@
             // txtProcedures
             // 
             txtProcedures.AutoSize = true;
-            txtProcedures.CustomizableEdges = customizableEdges13;
+            txtProcedures.CustomizableEdges = customizableEdges5;
             txtProcedures.DefaultText = "";
             txtProcedures.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtProcedures.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -129,13 +130,14 @@
             txtProcedures.PlaceholderText = "";
             txtProcedures.ScrollBars = ScrollBars.Vertical;
             txtProcedures.SelectedText = "";
-            txtProcedures.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtProcedures.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtProcedures.Size = new Size(467, 105);
             txtProcedures.TabIndex = 38;
+            txtProcedures.TextChanged += txtProcedures_TextChanged;
             // 
             // txtSearch
             // 
-            txtSearch.CustomizableEdges = customizableEdges11;
+            txtSearch.CustomizableEdges = customizableEdges3;
             txtSearch.DefaultText = "";
             txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -150,30 +152,32 @@
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "";
             txtSearch.SelectedText = "";
-            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtSearch.Size = new Size(492, 57);
             txtSearch.TabIndex = 39;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // btnSearch
             // 
             btnSearch.BorderRadius = 18;
             btnSearch.BorderThickness = 1;
-            btnSearch.CustomizableEdges = customizableEdges9;
+            btnSearch.CustomizableEdges = customizableEdges1;
             btnSearch.DisabledState.BorderColor = Color.DarkGray;
             btnSearch.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSearch.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSearch.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSearch.FillColor = Color.FromArgb(192, 192, 255);
+            btnSearch.FillColor = Color.IndianRed;
             btnSearch.Font = new Font("Century Gothic", 11F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            btnSearch.ForeColor = Color.Black;
-            btnSearch.HoverState.FillColor = Color.White;
+            btnSearch.ForeColor = Color.White;
+            btnSearch.HoverState.FillColor = Color.Crimson;
             btnSearch.ImageSize = new Size(30, 30);
             btnSearch.Location = new Point(594, 250);
             btnSearch.Name = "btnSearch";
-            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSearch.Size = new Size(206, 57);
             btnSearch.TabIndex = 40;
             btnSearch.Text = "Пошук";
+            btnSearch.Click += btnSearch_Click;
             // 
             // flowLayoutPanelDiseases
             // 
@@ -183,6 +187,7 @@
             flowLayoutPanelDiseases.Name = "flowLayoutPanelDiseases";
             flowLayoutPanelDiseases.Size = new Size(1025, 398);
             flowLayoutPanelDiseases.TabIndex = 42;
+            flowLayoutPanelDiseases.Paint += flowLayoutPanelDiseases_Paint;
             // 
             // UC_D_Disease
             // 

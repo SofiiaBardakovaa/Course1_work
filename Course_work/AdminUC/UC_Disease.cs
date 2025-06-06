@@ -86,10 +86,10 @@ namespace Course_work.AdminUC
         {
             var form = new DiseaseDetailsForm(d, diseaseManager);
             form.LoadDisease(d);
-            //form.ShowDialog();
+            form.ShowDialog();
             if (form.ShowDialog() == DialogResult.Yes)
             {
-                RedrawDiseaseList(); 
+                RedrawDiseaseList();
             }
         }
 
@@ -143,7 +143,7 @@ namespace Course_work.AdminUC
             var proceduresList = procedures.Split(',').Select(p => p.Trim()).Where(p => p != "").ToList();
             var medList = meds.Split(',').Select(m => m.Trim()).Where(m => m != "").ToList();
             var recommendedMeds = medList
-            .Select(m => new RecommendedMedication { Name = m, Quantity = 1 }) 
+            .Select(m => new RecommendedMedication { Name = m, Quantity = 1 })
             .ToList();
 
             var newDisease = new Disease(name, shortInfo, symptomsList, proceduresList, recommendedMeds);
@@ -174,6 +174,16 @@ namespace Course_work.AdminUC
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSymptoms_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProcedures_TextChanged(object sender, EventArgs e)
         {
 
         }

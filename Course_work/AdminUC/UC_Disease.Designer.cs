@@ -262,6 +262,7 @@
             txtSymptoms.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtSymptoms.Size = new Size(288, 129);
             txtSymptoms.TabIndex = 32;
+            txtSymptoms.TextChanged += txtSymptoms_TextChanged;
             // 
             // txtProcedures
             // 
@@ -286,6 +287,7 @@
             txtProcedures.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtProcedures.Size = new Size(319, 129);
             txtProcedures.TabIndex = 33;
+            txtProcedures.TextChanged += txtProcedures_TextChanged;
             // 
             // label1
             // 

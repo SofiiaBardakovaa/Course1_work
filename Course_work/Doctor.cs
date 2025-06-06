@@ -20,7 +20,6 @@ namespace Course_work
         private void Doctor_Load(object sender, EventArgs e)
         {
             btnDisease.PerformClick();
-            uC_D_Disease1.Visible = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
