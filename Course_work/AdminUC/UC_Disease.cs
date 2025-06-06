@@ -53,18 +53,24 @@ namespace Course_work.AdminUC
             Panel panel = new Panel
             {
                 BorderStyle = BorderStyle.FixedSingle,
-                Width = flowLayoutPanelDiseases.ClientSize.Width - 25,
-                Height = 120
+                Width = 580,
+                Height = 140
             };
 
-            Label lblName = new Label { Text = d.Name, Location = new Point(10, 10), AutoSize = true };
+            Label lblName = new Label
+            {
+                Text = d.Name,
+                Location = new Point(10, 10),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 13, FontStyle.Bold)
+            };
 
             string shortText = d.ShortInfo.Length > 80 ? d.ShortInfo.Substring(0, 80) + "..." : d.ShortInfo;
             Label lblShortInfo = new Label
             {
                 Text = shortText,
-                Location = new Point(10, 30),
-                Size = new Size(panel.Width - 90, 40),
+                Location = new Point(10, 45),
+                Size = new Size(530, 40),
                 AutoEllipsis = true
             };
 
@@ -72,8 +78,11 @@ namespace Course_work.AdminUC
             {
                 Text = "Редагувати",
                 Location = new Point(10, 80),
-                Size = new Size(100, 50)
+                Size = new Size(170, 50),
+                FlatStyle = FlatStyle.Flat
             };
+            btnInfo.FlatAppearance.BorderColor = Color.Black;
+            btnInfo.FlatAppearance.BorderSize = 2;
             btnInfo.Click += (s, e) => ShowFullInfo(d);
 
             panel.Controls.Add(lblName);

@@ -47,8 +47,6 @@ namespace Course_work
         {
             btnInfo.FillColor = Color.CornflowerBlue;
             btnAddNewUser.FillColor = Color.CornflowerBlue;
-            btnViewUser.FillColor = Color.CornflowerBlue;
-            btnProfile.FillColor = Color.CornflowerBlue;
         }
 
         private void Admin_Load(object sender, EventArgs e)

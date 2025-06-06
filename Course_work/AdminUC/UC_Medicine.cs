@@ -117,28 +117,36 @@ namespace Course_work.AdminUC
         {
             Panel panel = new Panel();
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Width = flowLayoutPanelMedications.Width - 25;
-            panel.Height = 100;
+            panel.Width = 530;
+            panel.Height = 150;
 
             Label lblName = new Label();
             lblName.Text = med.Name;
             lblName.Location = new Point(10, 10);
             lblName.AutoSize = true;
+            lblName.Font = new Font("Segoe UI", 13, FontStyle.Bold);
 
             Label lblQty = new Label();
             lblQty.Text = $"К-сть на складі: {med.Quantity}";
-            lblQty.Location = new Point(10, 30);
+            lblQty.Location = new Point(10, 45);
             lblQty.AutoSize = true;
 
             Button btnInfo = new Button();
             btnInfo.Text = "Відкрити повну інформацію";
-            btnInfo.Location = new Point(10, 60);
+            btnInfo.Location = new Point(10, 85);
+            btnInfo.Size = new Size(350, 50);
+            btnInfo.FlatAppearance.BorderColor = Color.Black;
+            btnInfo.FlatAppearance.BorderSize = 2;
+            btnInfo.FlatStyle = FlatStyle.Flat;
             btnInfo.Click += (s, e) => ShowFullInfo(med);
 
             Button btnEdit = new Button();
             btnEdit.Text = "Edit";
-            btnEdit.Size = new Size(60, 30);
-            btnEdit.Location = new Point(panel.Width - 70, 10);
+            btnEdit.Size = new Size(90, 70);
+            btnEdit.Location = new Point(panel.Width - 130, 50);
+            btnEdit.FlatAppearance.BorderColor = Color.Gray;
+            btnEdit.FlatAppearance.BorderSize = 2;
+            btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.Click += (s, e) => LoadMedicationForEditing(med);
 
             panel.Controls.Add(lblName);

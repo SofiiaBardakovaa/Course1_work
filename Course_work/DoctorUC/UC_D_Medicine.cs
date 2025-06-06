@@ -57,27 +57,35 @@ namespace Course_work.DoctorUC
                     }
                 }
 
-                if (rec.Quantity > med.Quantity)
+                int availableQty = med.Quantity;
+                if (availableQty == 0)
                 {
-                    MessageBox.Show($"⚠ Недостатньо препарату «{med.Name}»: потрібно {rec.Quantity}, є {med.Quantity}.");
+                    MessageBox.Show($"⚠ Препарат «{med.Name}» закінчився на складі.");
                     continue;
+                }
+
+                int finalQty = Math.Min(rec.Quantity, availableQty);
+
+                if (finalQty < rec.Quantity)
+                {
+                    MessageBox.Show($"⚠ Недостатньо препарату «{med.Name}»: потрібно {rec.Quantity}, буде додано {finalQty}.");
                 }
 
                 var item = new PrescriptionItem
                 {
                     Name = med.Name,
-                    Quantity = rec.Quantity
+                    Quantity = finalQty
                 };
 
                 prescriptionList.Add(item);
                 currentPrescription.Medications.Add(item);
                 AddPrescriptionItemToPanel(item);
 
-                med.Quantity -= rec.Quantity;
+                med.Quantity -= finalQty;
             }
 
             medicationManager.SaveToFile();
-            RedrawMedicationList(); 
+            RedrawMedicationList();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -94,6 +102,9 @@ namespace Course_work.DoctorUC
 
         private void AddMedicationToPanel(Medication med)
         {
+            if (med.Quantity == 0)
+                return; 
+
             Panel panel = new Panel
             {
                 BorderStyle = BorderStyle.FixedSingle,
@@ -123,6 +134,14 @@ namespace Course_work.DoctorUC
             };
 
             selectedCheckBoxes[checkBox] = med;
+
+            checkBox.CheckedChanged += (s, e) =>
+            {
+                if (checkBox.Checked)
+                {
+                    Console.WriteLine($"Вибрано: {med.Name}");
+                }
+            };
 
             Button btnInfo = new Button
             {

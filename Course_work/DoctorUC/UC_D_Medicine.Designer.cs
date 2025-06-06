@@ -234,6 +234,7 @@
             btnNumQuantity.Font = new Font("Segoe UI", 9F);
             btnNumQuantity.Location = new Point(865, 84);
             btnNumQuantity.Margin = new Padding(4, 5, 4, 5);
+            btnNumQuantity.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             btnNumQuantity.Name = "btnNumQuantity";
             btnNumQuantity.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnNumQuantity.Size = new Size(214, 69);

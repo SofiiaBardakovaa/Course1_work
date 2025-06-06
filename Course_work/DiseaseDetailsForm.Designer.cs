@@ -121,11 +121,11 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            lblName.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             lblName.Location = new Point(13, 18);
             lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(120, 40);
+            lblName.Size = new Size(125, 40);
             lblName.TabIndex = 25;
             lblName.Text = "Назва";
             lblName.Click += lblName_Click;

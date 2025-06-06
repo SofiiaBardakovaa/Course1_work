@@ -82,8 +82,8 @@ namespace Course_work
         private void btnSave_Click(object sender, EventArgs e)
         {
             originalDisease.ShortInfo = richTxtShortInf.Text.Trim();
-            originalDisease.Symptoms = txtSymptoms.Text.Split(',').Select(s => s.Trim()).Where(s => s != "").ToList();
-            originalDisease.Procedures = txtProcedures.Text.Split(',').Select(s => s.Trim()).Where(s => s != "").ToList();
+            originalDisease.Symptoms = txtSymptoms.Text.Split(',').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+            originalDisease.Procedures = txtProcedures.Text.Split(',').Select(p => p.Trim()).Where(p => !string.IsNullOrWhiteSpace(p)).ToList();
 
             List<RecommendedMedication> updatedMeds = new();
 
@@ -91,37 +91,46 @@ namespace Course_work
             {
                 if (row.IsNewRow) continue;
 
-                string name = row.Cells[0].Value?.ToString()?.Trim();
-                int quantity = 1;
-                int.TryParse(row.Cells[1].Value?.ToString(), out quantity);
+                var nameObj = row.Cells[0].Value;
+                var qtyObj = row.Cells[1].Value;
 
-                if (!string.IsNullOrWhiteSpace(name))
+                if (nameObj == null || string.IsNullOrWhiteSpace(nameObj.ToString()))
+                    continue;
+
+                string name = nameObj.ToString().Trim();
+                int quantity = 1;
+
+                int.TryParse(qtyObj?.ToString(), out quantity);
+
+                updatedMeds.Add(new RecommendedMedication
                 {
-                    updatedMeds.Add(new RecommendedMedication { Name = name, Quantity = quantity });
-                }
+                    Name = name,
+                    Quantity = quantity
+                });
             }
 
             var updatedDisease = new Disease(
                 originalDisease.Name,
-                richTxtShortInf.Text.Trim(),
-                txtSymptoms.Text.Split(',').Select(s => s.Trim()).Where(s => s != "").ToList(),
-                txtProcedures.Text.Split(',').Select(p => p.Trim()).Where(p => p != "").ToList(),
+                originalDisease.ShortInfo,
+                originalDisease.Symptoms,
+                originalDisease.Procedures,
                 updatedMeds
             );
 
             diseaseManager.Edit(originalDisease, updatedDisease);
 
             MessageBox.Show("Зміни збережено.");
-            Close();
+            this.DialogResult = DialogResult.Yes;
+            this.Close();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var confirm = MessageBox.Show(
-        $"Ви дійсно хочете видалити хворобу \"{originalDisease.Name}\"?",
-        "Підтвердження видалення",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Warning);
+            $"Ви дійсно хочете видалити хворобу \"{originalDisease.Name}\"?",
+            "Підтвердження видалення",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning);
 
             if (confirm == DialogResult.Yes)
             {
@@ -141,7 +150,6 @@ namespace Course_work
                 return;
             }
 
-            // Додаємо новий препарат із початковою кількістю 1
             dGridViewMedicines.Rows.Add(medName, 1);
             txtAddRecommendedMedicine.Text = "";
         }

@@ -62,17 +62,17 @@ namespace Course_work.DoctorUC
             Panel panel = new Panel
             {
                 BorderStyle = BorderStyle.FixedSingle,
-                Width = flowLayoutPanelDiseases.ClientSize.Width - 25,
-                Height = 120
+                Width = flowLayoutPanelDiseases.ClientSize.Width - 40,
+                Height = 150
             };
 
-            Label lblName = new Label { Text = d.Name, Location = new Point(10, 10), AutoSize = true };
+            Label lblName = new Label { Text = d.Name, Location = new Point(10, 10), AutoSize = true, Font = new Font("Segoe UI", 13, FontStyle.Bold) };
 
             string shortText = d.ShortInfo.Length > 80 ? d.ShortInfo.Substring(0, 80) + "..." : d.ShortInfo;
             Label lblShortInfo = new Label
             {
                 Text = shortText,
-                Location = new Point(10, 30),
+                Location = new Point(10, 45),
                 Size = new Size(panel.Width - 90, 40),
                 AutoEllipsis = true
             };
@@ -83,6 +83,9 @@ namespace Course_work.DoctorUC
                 Location = new Point(10, 80),
                 Size = new Size(200, 60)
             };
+            btnInfo.FlatAppearance.BorderColor = Color.Black;
+            btnInfo.FlatAppearance.BorderSize = 2;
+            btnInfo.FlatStyle = FlatStyle.Flat;
             btnInfo.Click += (s, e) => ShowFullInfo(d);
 
             panel.Controls.Add(lblName);
