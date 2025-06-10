@@ -18,6 +18,8 @@ namespace Course_work.DoctorUC
         private List<PrescriptionItem> prescriptionList = new();
         private Dictionary<CheckBox, Medication> selectedCheckBoxes = new();
         private Prescription currentPrescription = new();
+        private Dictionary<PrescriptionItem, Label> prescriptionLabels = new();
+
 
         public UC_D_Medicine()
         {
@@ -71,15 +73,28 @@ namespace Course_work.DoctorUC
                     MessageBox.Show($"⚠ Недостатньо препарату «{med.Name}»: потрібно {rec.Quantity}, буде додано {finalQty}.");
                 }
 
-                var item = new PrescriptionItem
+                var existingItem = prescriptionList.FirstOrDefault(p => p.Name == med.Name);
+                if (existingItem != null)
                 {
-                    Name = med.Name,
-                    Quantity = finalQty
-                };
+                    existingItem.Quantity += finalQty;
 
-                prescriptionList.Add(item);
-                currentPrescription.Medications.Add(item);
-                AddPrescriptionItemToPanel(item);
+                    if (prescriptionLabels.TryGetValue(existingItem, out Label lbl))
+                    {
+                        lbl.Text = $"{existingItem.Name} — {existingItem.Quantity} шт.";
+                    }
+                }
+                else
+                {
+                    var item = new PrescriptionItem
+                    {
+                        Name = med.Name,
+                        Quantity = finalQty
+                    };
+
+                    prescriptionList.Add(item);
+                    currentPrescription.Medications.Add(item);
+                    AddPrescriptionItemToPanel(item);
+                }
 
                 med.Quantity -= finalQty;
             }
@@ -108,7 +123,7 @@ namespace Course_work.DoctorUC
             Panel panel = new Panel
             {
                 BorderStyle = BorderStyle.FixedSingle,
-                Width = flowLayoutPanelMedications.Width - 25,
+                Width = flowLayoutPanelMedications.Width - 35,
                 Height = 130
             };
 
@@ -134,13 +149,14 @@ namespace Course_work.DoctorUC
                 AutoSize = true
             };
 
-            selectedCheckBoxes[checkBox] = med;
-
+            Medication currentMed = med;
+            selectedCheckBoxes[checkBox] = currentMed;
+ 
             checkBox.CheckedChanged += (s, e) =>
             {
                 if (checkBox.Checked)
                 {
-                    Console.WriteLine($"Вибрано: {med.Name}");
+                    Console.WriteLine($"Вибрано: {currentMed.Name}");
                 }
             };
 
@@ -151,6 +167,7 @@ namespace Course_work.DoctorUC
                 Width = 200,
                 Height = 60
             };
+
             btnInfo.FlatAppearance.BorderColor = Color.Black;
             btnInfo.FlatAppearance.BorderSize = 2;
             btnInfo.FlatStyle = FlatStyle.Flat;
@@ -172,6 +189,8 @@ namespace Course_work.DoctorUC
 
         private void RedrawMedicationList()
         {
+            selectedCheckBoxes.Clear();
+
             flowLayoutPanelMedications.Controls.Clear();
             foreach (var med in medicationManager.Medications)
             {
@@ -201,46 +220,54 @@ namespace Course_work.DoctorUC
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-                   var selectedPairs = selectedCheckBoxes
+            var selectedPairs = selectedCheckBoxes
                 .Where(pair => pair.Key.Checked)
-                .ToList(); 
+                .ToList();
+
+            int qty = (int)btnNumQuantity.Value;
+
+            if (qty <= 0)
+            {
+                MessageBox.Show("Кількість має бути більшою за 0.");
+                return;
+            }
 
             foreach (var pair in selectedPairs)
             {
                 CheckBox cb = pair.Key;
-                Medication med = pair.Value;
-                int qty = (int)btnNumQuantity.Value;
+                Medication selectedMed = pair.Value; // створюємо окрему змінну
 
-                if (qty > med.Quantity)
+                if (qty > selectedMed.Quantity)
                 {
-                    MessageBox.Show($"Неможливо додати {qty} шт. — на складі лише {med.Quantity}.");
+                    MessageBox.Show($"Неможливо додати {qty} шт. — на складі лише {selectedMed.Quantity}.");
                     continue;
                 }
 
-                if (prescriptionList.Any(p => p.Name == med.Name))
+                if (prescriptionList.Any(p => p.Name == selectedMed.Name))
                 {
-                    MessageBox.Show($"Препарат «{med.Name}» вже доданий до рецепту.");
+                    MessageBox.Show($"Препарат «{selectedMed.Name}» вже доданий до рецепту.");
                     continue;
                 }
 
                 var item = new PrescriptionItem
                 {
-                    Name = med.Name,
+                    Name = selectedMed.Name,
                     Quantity = qty
                 };
 
                 prescriptionList.Add(item);
                 currentPrescription.Medications.Add(item);
 
-                med.Quantity -= qty;
-                medicationManager.Save(); 
+                selectedMed.Quantity -= qty;
+                medicationManager.Save();
 
                 AddPrescriptionItemToPanel(item);
                 cb.Checked = false;
                 btnNumQuantity.Value = 1;
             }
 
-            RedrawMedicationList(); 
+
+            RedrawMedicationList();
         }
 
         private void AddPrescriptionItemToPanel(PrescriptionItem item)
@@ -260,6 +287,8 @@ namespace Course_work.DoctorUC
                 AutoSize = true,
                 Font = new Font("Segoe UI", 11, FontStyle.Bold)
             };
+
+            prescriptionLabels[item] = lbl;
 
             Button btnEdit = new Button
             {
@@ -316,6 +345,7 @@ namespace Course_work.DoctorUC
                 }
 
                 pnlPresctiptionList.Controls.Remove(panel);
+                prescriptionLabels.Remove(item);
                 RedrawMedicationList();
             };
 
