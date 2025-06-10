@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Course_work.Models;
 
-namespace Course_work.Models
+namespace Course_work.Managers
 {
     public class DiseaseManager
     {
