@@ -236,7 +236,7 @@ namespace Course_work.DoctorUC
             foreach (var pair in selectedPairs)
             {
                 CheckBox cb = pair.Key;
-                Medication selectedMed = pair.Value; // створюємо окрему змінну
+                Medication selectedMed = pair.Value; 
 
                 if (qty > selectedMed.Quantity)
                 {

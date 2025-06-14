@@ -25,7 +25,9 @@ namespace Course_work.Models
                     .ToList()
             };
         }
+
         public Medication() { }
+
         public string GetSubstitutesAsString()
         {
             return string.Join(", ", Substitutes);
